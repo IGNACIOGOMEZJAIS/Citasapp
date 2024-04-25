@@ -1,0 +1,21 @@
+.circular-clock {
+    width: 200px; /* Ancho del contenedor */
+    height: 200px; /* Altura del contenedor */
+    border-radius: 50%; /* Para hacerlo circular */
+    border: 2px solid blue; /* Color azul para el borde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+.circular-retraso{width: 200px; /* Ancho del contenedor */
+    height: 200px; /* Altura del contenedor */
+    border-radius: 50%; /* Para hacerlo circular */
+    border: 2px solid red; /* Color azul para el borde */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;}
+.clock {
+    color: #333; /* Color del texto del reloj */
+}
