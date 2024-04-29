@@ -9,14 +9,16 @@ export const StartCita = () => {
     const { elapsedTime, start, formatTime, reset, stop } = Cronometro();
     const [tardanza, setTardanza] = useState(0);
     const { citas, getCitas, citaSeleted, handlerSelectCita,handlerAddCita} = useCita();
-    const [citasHora, setCitasHora] = useState();
+    const [citasHora, setCitasHora] = useState({});
     const [currentPatientIndex, setCurrentPatientIndex] = useState(0);
     const [finished, setFinished] = useState(false);
 
     useEffect(() => {
         getCitas();
-    }, [getCitas]);
+    }, []);
 
+  
+    
     useEffect(() => {
         if (minutes === "00" && seconds === "00" && !countdownFinished) {
             setCountdownFinished(true);
@@ -53,6 +55,21 @@ export const StartCita = () => {
         
         
     }
+    // const nextPatient = () => {
+    //     if (currentPatientIndex < citas.length - 1) {
+    //         setCurrentPatientIndex(currentPatientIndex + 1);
+    //         reset();
+    //         resetCountDown();
+    //         setCountdownFinished(false);
+    //         let tiempoTrans = elapsedTime;
+    //         setTardanza(tiempoTrans);
+                
+            
+            
+    //     }
+        
+    // };
+    
     const nextPatient = () => {
         if (currentPatientIndex < citas.length - 1) {
             setCurrentPatientIndex(currentPatientIndex + 1);
@@ -61,37 +78,30 @@ export const StartCita = () => {
             setCountdownFinished(false);
             let tiempoTrans = elapsedTime;
             setTardanza(tiempoTrans);
-                
             
-            
+            // Iterar sobre todas las citas posteriores
+            for (let i = currentPatientIndex + 1; i < citas.length; i++) {
+                const cita = citas[i];
+                // Actualizar citasHora manteniendo los demás campos y sumando la tardanza al campo hora
+                setCitasHora(citas => {
+                    // Clonar el objeto citasHora para no modificar el estado directamente
+                    const newCitasHora = {...citas};
+                    
+                    // Verificar si existe la cita en el estado actual
+                    if (newCitasHora[cita.idCita]) {
+                        // Sumar la tardanza al campo de hora
+                        newCitasHora[cita.idCita].hora += tiempoTrans;
+                    }
+                    
+                    // Devolver el nuevo estado
+                    return newCitasHora;
+                });
+            }
         }
-        
     };
     
     
     
-    // const onInputChange = ({target}) => {
-    //     const { name } = target;
-        
-        
-    //     // Actualizar citasHora manteniendo los demás campos y sumando la tardanza al campo hora
-    //     setCitasHora(citas => {
-    //         // Clonar el objeto citasHora para no modificar el estado directamente
-    //         const newCitasHora = {...citas};
-            
-    //         // Verificar si existe la cita en el estado actual
-    //         if (newCitasHora[name]) {
-    //             // Sumar la tardanza al campo de hora
-    //             newCitasHora[name].hora += tardanza;
-    //         }
-            
-    //         // Imprimir el valor actualizado de newCitasHora en la consola
-    //         console.log("Valor actualizado de newCitasHora:", newCitasHora);
-            
-    //         // Devolver el nuevo estado
-    //         return newCitasHora;
-    //     });
-    // };
     
     
     

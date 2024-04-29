@@ -3,6 +3,7 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { formatDate } from "../utils/formatDate";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 
 export const CitaForm = ({ handlerAddCita, initialCitasForm, citaSeleted }) => {
@@ -53,7 +54,7 @@ export const CitaForm = ({ handlerAddCita, initialCitasForm, citaSeleted }) => {
     let footer = <p>Por favor selecciona un dia.</p>;
     if (date) {
 
-        footer = <p>Usted selecciono {formatDate(date)}.</p>;
+        footer = <p>Usted selecciono {(date).toLocaleDateString()}.</p>;
 
     }
 

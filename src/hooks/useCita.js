@@ -46,6 +46,7 @@ export const useCita = () => {
         let response;
         if (cita.idCita === 0) {
             response = await save(cita);
+            console.log(cita.idCita);
         } else {
             response = await update(cita);
             

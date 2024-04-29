@@ -1,2 +1,7 @@
-export const formatDate = (fecha) => new Date (fecha).toLocaleDateString().split('T')[0];
+export const formatDate = (fecha) => {
+    
+const [anio,mes,dia] = fecha.split("-");
+
+    return `${dia}/${mes}/${anio}`;
+}
 

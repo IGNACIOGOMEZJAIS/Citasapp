@@ -34,7 +34,7 @@ export const CitasRoutes = ({ login, handlerLogout }) => {
                 <Route path="citas/register" element={<RegisterCita 
                 handlerAddCita={handlerAddCita}
                 initialCitasForm={initialCitasForm} />} />
-                <Route path="citas/edit/:idcita" element={<RegisterCita 
+                <Route path="citas/edit/:idCita" element={<RegisterCita 
                 citas={citas}
                 handlerAddCita={handlerAddCita}
                 initialCitasForm={initialCitasForm} />} />
