@@ -46,3 +46,29 @@ export const update = async ({fecha,hora,idCita}) =>{
             console.error(error);
         }
     }
+
+    export const sumarTardanzasDeTurno = async (idCita, tardanza)=>{
+         console.log(idCita,tardanza)
+        try{ 
+        await axios.put(`${BASE_URL}/citacurso/${idCita}`,{
+            tardanza,
+           
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+    export const finishCita = async (idCita)=>{
+     
+        try{ 
+        await axios.put(`${BASE_URL}/citafinish/${idCita}`,{
+            
+           
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+    
+    

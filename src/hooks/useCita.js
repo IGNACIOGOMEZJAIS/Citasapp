@@ -22,6 +22,7 @@ export const useCita = () => {
     const [citas, dispatch] = useReducer(citasReducer, initialCitas);
     const [citaSeleted, SetCitaSeleted] = useState(initialCitasForm);
     const navigate = useNavigate();
+    
     const getCitas = async () =>{
         const result =  await findAll();
         
@@ -91,6 +92,7 @@ export const useCita = () => {
           });
     }
 
+    
 
     return {
         citas,
