@@ -21,11 +21,12 @@ return (
             Solicitar Turno
           </NavLink>
         </li>
+        {!login.isAdmin ||
         <li className="nav-item">
           <NavLink className="nav-link" to="/citas/citacurso">
             Comenzar Consultas
           </NavLink>
-        </li>
+        </li>}
 
 
 

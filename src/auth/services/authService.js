@@ -1,4 +1,13 @@
-export const loginPacient = (pacientLogin) =>{
+import axios from "axios";
 
-   return  (pacientLogin.dni === '43692062' && pacientLogin.password === '12345');
+export const loginPacient = async ({dni,password}) =>{
+
+   try {
+      return await axios.post('http://localhost:8080/login',{
+         dni,password,
+      })
+      
+   } catch (error) {
+      throw error;
+   }
 }

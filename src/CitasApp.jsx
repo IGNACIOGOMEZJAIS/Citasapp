@@ -29,6 +29,7 @@ import { CitasRoutes } from "./routes/CitasRoutes";
 //   ];
 const initialLogin = JSON.parse(sessionStorage.getItem('login')) || {
     isAuth: false,
+    isAdmin: false,
     pacient: undefined,
 }
 
@@ -36,26 +37,40 @@ export const CitasApp = () => {
     
     const navigate = useNavigate();
     const [login, dispatch] = useReducer(loginReducer, initialLogin)
-    const handlerlogin = ({ dni, password }) => {
-        const isLogin = loginPacient({ dni, password });
+    const handlerlogin = async({ dni, password }) => {
         if (!dni || !password) {
             Swal.fire('Error de validacion', 'Dni y/o Contraseña requeridos', 'error');
         }
-        if  (isLogin){
+        try {
+            const response = await loginPacient({ dni, password });
+            const token = response.data.token;
+            const claims = JSON.parse(window.atob(token.split(".")[1]));
+            console.log(claims);
 
-            const pacient = { dni: '43692062' , nombre:'Ignacio Gomez Jais' }
+            const pacient = { dni: response.data.dni , nombre: response.data.nombreApe }
             dispatch({
                 type: 'login',
-                payload: pacient,
+                payload: {dni, isAdmin: claims.isAdmin},
             })
             sessionStorage.setItem('login', JSON.stringify({
                 isAuth: true,
+                isAdmin: claims.isAdmin,
                 pacient: pacient,
             }));
+            sessionStorage.setItem('token', `Bearer ${token}`);
             navigate('/citas');
-        } else {
+        } catch(error) {
 
-            Swal.fire('Error de validacion', 'Dni y/o Contraseña invalidos', 'error');
+            if(error.response?.status==401){
+                Swal.fire('Error de validacion', 'Dni y/o Contraseña invalidos', 'error');
+
+            }else if(error.response?.status==403){
+                Swal.fire('Error de validacion', 'No tiene acceso al recurso o permiso', 'error');
+
+
+            }else{
+                throw error;
+            }
         }
     }
 
@@ -65,6 +80,8 @@ export const CitasApp = () => {
             type: 'logout',
         });
         sessionStorage.removeItem('login');
+        sessionStorage.removeItem('token');
+        sessionStorage.clear();
     }
 
     return (

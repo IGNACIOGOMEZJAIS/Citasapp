@@ -4,7 +4,7 @@ import { TurnoRow } from "./TurnoRow";
 export const TurnosList = ({ citas = [] ,handlerRemoveUser, handlerSelectCita}) => {
     return (
         <>
-            <p>Listado de turnos</p>
+            <p className="fw-bold">Listado de turnos</p>
             <table className="table table-hover table-striped">
                 <thead>
                     <tr>

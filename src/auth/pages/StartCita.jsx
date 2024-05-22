@@ -130,7 +130,7 @@ export const StartCita = () => {
     
     return (
         <>
-            <div className="container d-flex justify-content-center align-items-center">
+            <div className="container d-flex justify-content-center align-items-center mt-5">
                 <div className="container d-flex justify-content-center align-items-center">
                     {finished ? <h2>Buen trabajo!. Felicidades</h2> :
                         (!finished && (minutes === "00" && seconds === "00" ? <h2>Retraso</h2> : <h2>Turno en curso</h2>))
@@ -138,7 +138,7 @@ export const StartCita = () => {
                 </div>
             </div>
 
-            <div className="container d-flex justify-content-center align-items-center">
+            <div className="container d-flex justify-content-center align-items-center ">
                 <div className={minutes === "00" && seconds === "00" ? "circular-retraso" : "circular-clock"}>
                     {!countdownFinished && <p>{minutes}:{seconds}</p>}
                     {countdownFinished && <h1>{formatTime(elapsedTime)}</h1>}

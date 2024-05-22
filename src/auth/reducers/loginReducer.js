@@ -4,11 +4,15 @@ switch (action.type) {
         
         return{
             isAuth: true,
-            pacient: action.payload,
+            isAdmin: action.payload.isAdmin,
+            pacient: action.payload.user,
         };
         case'logout':
         return{
             isAuth:false,
+            isAdmin:false,
+            pacient:undefined,
+
         };
 
     default:

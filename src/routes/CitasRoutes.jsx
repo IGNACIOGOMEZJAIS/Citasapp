@@ -38,8 +38,9 @@ export const CitasRoutes = ({ login, handlerLogout }) => {
                 citas={citas}
                 handlerAddCita={handlerAddCita}
                 initialCitasForm={initialCitasForm} />} />
+                 {!login.isAdmin || <>
                 <Route path="citas/citacurso" element={<StartCita/>} />
-                <Route path="citas/citacurso" element={<StartCita/> } />
+                <Route path="citas/citacurso" element={<StartCita/> } /> </> }
                 <Route path="/" element={<Navigate to="/citas" />} />
             </Routes>
         </>
