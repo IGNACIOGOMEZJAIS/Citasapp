@@ -46,6 +46,18 @@ export const update = async ({fecha,hora,idCita}) =>{
     }
     return undefined;
     }
+export const updateReceta = async (idCita,recetaMedica) =>{
+
+    try {
+        return await axios.put(`${BASE_URL}/citacurso/updateReceta/${idCita}`,{
+            recetaMedica
+        },config())
+    } catch (error) {
+        console.error(error)
+        
+    }
+    return undefined;
+    }
 
     export const remove = async (idCita) =>{
         try {
