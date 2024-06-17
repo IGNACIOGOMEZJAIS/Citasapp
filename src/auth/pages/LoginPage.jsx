@@ -35,7 +35,7 @@ export const LoginPage = ({handlerlogin}) => {
                     <form onSubmit={onSubmit}>
                         <div className="modal-body">
                             <div className="d-flex justify-content-center ">
-                                <img src='../imagen/images (2).png' className="img-fluid" alt="..." />
+                                <img src='../imagen/health-care-logo-stethoscope-with-a-medical-cross-vector.jpg' className="img-fluid w-50" alt="..." />
                             </div>
                             <div className=" justify-content-center">
                                 <div>
