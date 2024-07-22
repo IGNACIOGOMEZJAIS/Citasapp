@@ -75,7 +75,7 @@ export const CitaForm = ({ handlerAddCita, initialCitasForm, citaSeleted }) => {
                     onChange={onInputChange}
                 >
                     <option disabled value="">Especialidad</option>
-                    <option value="Otorrino">Otorrino</option>
+                    <option value="Otorrino">Otorrinolaringólogo</option>
                     <option value="Cirujano General">Cirujano General</option>
                     <option value="Cardiólogo">Cardiólogo</option>
                 </select> }
@@ -123,11 +123,17 @@ export const CitaForm = ({ handlerAddCita, initialCitasForm, citaSeleted }) => {
                 >
                     <option disabled value="">Hora</option>
                     <option value="18:00">18:00</option>
-                    <option value="18:30">18:30</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:30">19:30</option>
-                    <option value="20:00">20:00</option>
-                    <option value="20:30">20:30</option>
+                    <option value="18:30">18:15</option>
+                    <option value="19:00">18:30</option>
+                    <option value="19:30">18:45</option>
+                    <option value="20:00">19:00</option>
+                    <option value="20:30">19:15</option>
+                    <option value="21:00">19:30</option>
+                    <option value="21:00">19:45</option>
+                    <option value="21:00">20:00</option>
+                    <option value="21:00">20:15</option>
+                    <option value="21:00">20:30</option>
+                    <option value="21:00">20:45</option>
                     <option value="21:00">21:00</option>
                 </select>
                 <input type="hidden"
